@@ -1,37 +1,46 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-class Clicker extends React.Component {
-    constructor(props) {
+class Citylister extends React.Component {
+    constructor() {
         super();
         this.state = {
-            counterValue: 1,
-            lista: ["första", "andra"],
+            sweCities: ["Stockholm", "Göteborg", "Lund", "Växjö", "Härnösand"],
         };
-        this.doubleValue = this.doubleValue.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    doubleValue() {
-        this.setState({
-            counterValue: this.state.counterValue * 2,
-        });
-    }
+    handleSubmit(event) {
+        event.preventDefault();
+        /* Att direkt modifiera en array går inte i React, 
+        därför kan man lösa det så här */
 
-    setRandomValue() {
-        this.setState({
-            counterValue: Math.floor(Math.random() * 10),
-        });
+        // Create a new array based on current state:
+        let sweCities = [...this.state.sweCities];
+
+        // Add item to it
+        sweCities.push(event.target.newcity.value);
+
+        // Set state
+        this.setState({ sweCities });
     }
 
     render() {
         return (
             <div>
-                <p>Värde: {this.state.counterValue}</p>
-                <button onClick={this.doubleValue}>Dubbla</button>
-                <button onClick={() => this.setRandomValue()}>Slumpa</button>
+                <ul>
+                    {this.state.sweCities.map((city) => (
+                        <li>{city}</li>
+                    ))}
+                </ul>
+
+                <form onSubmit={this.handleSubmit}>
+                    <input name="newcity" type="text" />
+                    <input type="submit" value="Lägg till stad" />
+                </form>
             </div>
         );
     }
 }
 
-ReactDOM.render(<Clicker />, document.getElementById("root"));
+ReactDOM.render(<Citylister />, document.getElementById("root"));
