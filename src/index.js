@@ -6,6 +6,7 @@ class Clicker extends React.Component {
         super();
         this.state = {
             counterValue: 1,
+            lista: ["första", "andra"],
         };
         this.doubleValue = this.doubleValue.bind(this);
     }
@@ -33,9 +34,4 @@ class Clicker extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <div>
-        <Clicker />
-    </div>,
-    document.getElementById("root")
-);
+ReactDOM.render(<Clicker />, document.getElementById("root"));
