@@ -1,17 +1,68 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+
+function DagensProgram(props) {
+    return (
+        <div>
+            <h1>{props.today}</h1>
+            <ol>
+                <li>Repetition TS</li>
+                <li>React introduktion</li>
+                <ul>
+                    <li>Vad?</li>
+                    <li>Varför?</li>
+                    <li>Hur? (JSX)</li>
+                    <li>API/Objekt</li>
+                    <li>Komponenter</li>
+                    <li>Props</li>
+                    <li>State</li>
+                </ul>
+                <li>React listor & formulär</li>
+                <li>React Komponenter i Komponenter</li>
+            </ol>
+        </div>
+    );
+}
+
+class TodaysProgram extends React.Component {
+    constructor(props) {
+        super();
+        // Wrap html-expression in fragment (empty HTML-tag)
+        this.state = {
+            agenda: (
+                <>
+                    <li>Repetition TS</li>
+                    <li>React introduktion</li>
+                    <ul>
+                        <li>Vad?</li>
+                        <li>Varför?</li>
+                        <li>Hur? (JSX)</li>
+                        <li>API/Objekt</li>
+                        <li>Komponenter</li>
+                        <li>Props</li>
+                        <li>State</li>
+                    </ul>
+                    <li>React listor & formulär</li>
+                    <li>React Komponenter i Komponenter</li>
+                </>
+            ),
+        };
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>{this.props.today}</h1>
+                <ol>{this.state.agenda}</ol>
+            </div>
+        );
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <div>
+        <DagensProgram today="24 september" />,
+        <TodaysProgram today="24th of september" />
+    </div>,
+    document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
