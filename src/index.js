@@ -7,7 +7,7 @@ class Citylister extends React.Component {
         this.state = {
             sweCities: ["Stockholm", "Göteborg", "Lund", "Växjö", "Härnösand"],
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
@@ -34,7 +34,7 @@ class Citylister extends React.Component {
                     ))}
                 </ul>
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
                     <input name="newcity" type="text" />
                     <input type="submit" value="Lägg till stad" />
                 </form>
