@@ -13,7 +13,7 @@ article.produkt {
 .produkt h3 {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 2em;
-    color: orange;
+    color: rgba(17, 14, 11, 0.884);
 }
 
 ol,
