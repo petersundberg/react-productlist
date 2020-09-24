@@ -6,8 +6,9 @@ class Citylister extends React.Component {
         super();
         this.state = {
             sweCities: ["Stockholm", "Göteborg", "Lund", "Växjö", "Härnösand"],
+            money: 100,
         };
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
@@ -22,7 +23,7 @@ class Citylister extends React.Component {
         sweCities.push(event.target.newcity.value);
 
         // Set state
-        this.setState({ sweCities });
+        this.setState({ sweCities: sweCities });
     }
 
     render() {
@@ -33,14 +34,18 @@ class Citylister extends React.Component {
                         <li>{city}</li>
                     ))}
                 </ul>
-
-                <form onSubmit={(e) => this.handleSubmit(e)}>
+                <ShowMoney money={this.state.money} />
+                <form onSubmit={this.handleSubmit}>
                     <input name="newcity" type="text" />
                     <input type="submit" value="Lägg till stad" />
                 </form>
             </div>
         );
     }
+}
+
+function ShowMoney(props) {
+    return <p>{props.money - 5}</p>;
 }
 
 ReactDOM.render(<Citylister />, document.getElementById("root"));
